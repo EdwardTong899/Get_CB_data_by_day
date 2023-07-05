@@ -1,6 +1,7 @@
 # 爬取 "https://thefew.tw/cb"網站，並對其資料作後處理
    - 網站需要登入才可存取完整檔案，因此需要加入自己的cookie
    - 檔案會輸出成data.xlsx格式
+   - 未來目標，完成"目標1.jpg"
 
 # 環境說明
   - 此程式可直接執行原始碼，使用python即可執行
@@ -127,4 +128,3 @@ df.to_excel('data.xlsx', index=False)  # 將數據框保存為 Excel 檔案，�
 print(df)
 
 ```
-8. 未來目標，完成"目標1.jpg"
