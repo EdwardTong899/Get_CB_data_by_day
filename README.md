@@ -118,3 +118,4 @@ df.to_excel('data.xlsx', index=False)  # 將數據框保存為 Excel 檔案，�
 print(df)
 
 ```
+8. 未來目標，完成"目標1.jpg"
