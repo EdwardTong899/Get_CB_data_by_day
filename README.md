@@ -81,32 +81,41 @@ dic = {
    - s_greater_than_days(lines[i+14]) #到期日不能少於x 天 simon說180days
    - is_gap_percentage_greater_than(lines[i+10]) #價差不能超過x % simon說10%
 ```shell
-for i in range(len(lines)):
-    if(is_integer_greater_than_10000(lines[i])):
-        print(lines[i])
-        if(is_percentage_greater_than(lines[i+13]) and is_greater_than_days(lines[i+14]) and is_gap_percentage_greater_than(lines[i+10])):
-            c0.append(lines[i])
-            c1.append(lines[i+1])
-            c2.append(lines[i+8])
-            c3.append(lines[i+9])
-            c4.append(lines[i+10])
-            c5.append(lines[i+11])
-            c6.append(lines[i+12])
-            c7.append(lines[i+13])
-            c8.append(lines[i+14])
+transfer_percentage = 50
+transfer_days_than = 180
+transfer_gap_percentage = 9
 
-        i = i + 14
-        
-dic = {
-    "代碼": c0,
-    "名稱": c1,
-    "CB收盤價": c2,
-    "轉換價值": c3,
-    "轉換溢價率": c4,
-    "股票收盤價": c5,
-    "轉換價": c6,
-    "已轉換(%)": c7,
-    "到期/提前賣回日": c8
+def is_integer_greater_than_10000(s):
+    try:
+        num = int(s)
+        return num > 10000
+    except ValueError:
+        return False
+
+
+
+def is_percentage_greater_than(s):
+    try:
+        num = float(s.strip('%'))  #去除百分比轉浮點數
+        return num < transfer_percentage
+    except ValueError:
+        return False
+
+
+def is_greater_than_days(date_string):
+    # 將字符串轉換為日期對象
+    date = datetime.strptime(date_string, "%Y-%m-%d")
+    
+    print(date)
+    # 獲取當前日期並設置為UTC+8時區
+    current_date = datetime.now(pytz.timezone("Asia/Shanghai"))
+    current_date = current_date.replace(tzinfo=None)
+    print(current_date)
+    # 計算日期差距
+    delta = date - current_date
+    print(delta)
+    # 判斷日期差距是否大於180天
+    return delta.days > transfer_days_than
 }
 ```
 7. 存入xlsx
