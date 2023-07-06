@@ -18,6 +18,7 @@ import pickle, pytz
 
 ```
 2. 填入自己的cookie，可登入"https://thefew.tw/cb"網站後按網頁檢查，取得cookie後到 "https://curlconverter.com/" 將cookie轉換為python格式
+   - 可參考檔案中的"cookie爬蟲教學"
 ```shell
 # cookies = {
 xxxx
